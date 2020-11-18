@@ -76,8 +76,13 @@ if st.button("HeatMap"):
     st.write(dfHeatmap)
     st.pyplot()
 
-if st.button("Displot"):
-    st.dataframe(sns.displot(df))
+# Show Histrogram
+dfColumnsName = df.columns.tolist()
+selectedColumns = st.multiselect('Colonne à afficher', dfColumnsName)
+if st.button('Show graph'):
+    dfHist = df[selectedColumns].plot(kind='hist')
+    st.write(dfHist)
+    st.pyplot()
 
 
 # Show Columns
