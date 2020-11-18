@@ -1,9 +1,9 @@
 # Python-Web-M1
 
 # Commande pour lancer Application
-`streamlit run viewer.py`
+`streamlit run file.py`
 
-## TP : réalisation d'une data app 
+## TP1 : réalisation d'une data app 
 
 votre mission est de construire une petite application de visualisation interactive de données avec l’outil Streamlit vu au chapitre précédent, qui contiendra les fonctionnalités suivantes :   
 
@@ -23,3 +23,6 @@ Et enfin une dernière partie dite « visualisation personnalisable » qui perme
 * Sélectionner le type de graphique à tracer
 Sélectionner des colonnes dans le jeux de données afin de générer le graphique
 * **(bonus)**À noter que suivant certain jeux de données il y aura des graphiques qui n’auront pas de sens capturez les dans des exceptions 🧐
+
+
+## TP2 :
