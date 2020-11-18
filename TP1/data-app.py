@@ -40,36 +40,37 @@ st.info("Vous avez choisi {}".format(filename))
 # Read Data
 df = pd.read_csv(filename)
 
-# Show Columns
+# Show number of line by input
 st.subheader(
     "Afficher le dataset chargé suivant un nombre de ligne entrées par l’utilisateur")
 number = st.number_input("Choissez un nombre")
 if st.button("Show dataset sample"):
     st.write(df.head(int(number)))
 
-# Show Columns
+# Show Name of the columns
 st.subheader("Afficher le nom des colonnes du dataset")
 if st.button("Montre les noms des colonnes"):
     st.write(df.columns)
 
-# Show Columns
+# Show type of columns
 st.subheader(
     "Afficher le type des colonnes du dataset ainsi que les colonnes sélectionnées")
 if st.button("Montre les types des colonnes"):
-    st.write(df.dtypes())
+    st.write(df.info())
 
-# Show Columns
+# Show describe
 st.subheader("La shape du dataset, par lignes et par colonnes")
-if st.button("Show shape"):
+if st.button("Shape du dataset"):
     st.write(df.describe())
 
-# Show Columns
+# Show stat
 st.subheader("Afficher les statistiques descriptives du dataset")
-if st.button("Summary"):
+if st.button("Statistique descriptive"):
     st.write(df.describe().T)
 
 # Show graph heatmap /
-st.subheader("Afficher plusieurs type de graphique dans une partie visualisation avec notamment : *Une heatmap des corrélations avec Matplotlib et Seaborn (avec les valeurs annotés) | *Un graphique en barres afin de visualiser la taille du dataset par caractéristiques (on pourra notamment grouper les données afin d’avoir des graphiques plus précis) ")
+st.subheader(
+    "Afficher plusieurs type de graphique dans une partie visualisation avec notamment : ")
 if st.button("HeatMap"):
     dfHeatmap = sns.heatmap(df.corr(), annot=True)
     dfHeatmap.set_title('Heatmap')
@@ -84,15 +85,26 @@ if st.button('Show graph'):
     st.write(dfHist)
     st.pyplot()
 
-# Show Columns
+# Select type
 st.subheader("Sélectionner le type de graphique à tracer")
-selected_graphtype = st.selectbox("Choissisez le fichier ", "a")
+selected_graphtype = st.selectbox(
+    "Choissisez le fichier ", ("histogram", "lineplot"))
 
-# Show Columns
+# Select col
 st.subheader(
     "Sélectionner des colonnes dans le jeux de données afin de générer le graphique")
 selected_col1 = st.selectbox("Choissisez la première colonne ", df.columns)
 selected_col2 = st.selectbox("Choissisez la deuxième colonne ", df.columns)
 
-# Show Columns
+# Create
+if st.button('Create'):
+    if selected_graphtype == "histogram":
+        dfHist = df[selected_col1].plot(kind='hist')
+        st.write(dfHist)
+        st.pyplot()
+    if selected_graphtype == "lineplot":
+        dfLP = df[selected_col1].plot(kind='line')
+        st.write(dfLP)
+        st.pyplot()
+
 st.subheader("**(bonus)**À noter que suivant certain jeux de données il y aura des graphiques qui n’auront pas de sens capturez les dans des exceptions 🧐")
