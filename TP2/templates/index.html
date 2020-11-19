@@ -3,13 +3,30 @@
     <head>
     </head>
     <body>
-        <h1>Hello DC</h1>
+        <h1>Hello my APP</h1>
         <p>This is the home page of my website made in Flask</p>
 
         <form action = "http://localhost:5000/ma route" method = "POST">
             <label for="name">Name :</label>
             <input type="text" id="name" name="name" size="24">
             <input type="submit" value="Send">
+        </form>
+
+        <form action = "http://localhost:5000/books" method = "POST">
+            <h3>Boutton pour voir les livres</h3>
+            <input type="submit" value="Voir les livres sous format JSON">
+        </form>
+
+        <form action = "http://localhost:5000/books id" method = "POST">
+            <h3>Boutton pour voir les livres en fonction de leur ID</h3>
+            <input type="number" id="idbook" name="idbook" size="24">
+            <input type="submit" value="Voir le livre">
+        </form>
+
+        <form action = "http://localhost:5000/books titre" method = "POST">
+            <h3>Boutton pour voir les livres en fonction de leur titre</h3>
+            <input type="text" id="titre" name="titre" size="24">
+            <input type="submit" value="Voir le livre">
         </form>
     </body>
 </html>
