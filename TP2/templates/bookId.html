@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <p>Le livre que vous avez choisit est le livre suivant :</p>
+        {% for x in data["book"] %}
+            {% if x['id'] == idbook.idbook %}
+            <p>ID : {{ x['id'] }}</p>
+            <p>Titre : {{ x['titre'] }}</p>
+            {% endif %}           
+        {% endfor %}
+
+    </body>
+</html>
